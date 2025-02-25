@@ -19,26 +19,26 @@
                 <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
                     <span>Anderson</span>
                 </div>
-                <div class="links1">
-                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#">Home</a></div>
-                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="#">About</a></div>
-                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="#">Skills</a></div>
-                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="#">Projects</a></div>
-                </div>s
-                <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+                <div class="links">
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#main-container">Home</a></div>
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="#about">About</a></div>
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="#skills">Skills</a></div>
+                    <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="#projects">Projects</a></div>
+                </div>
+                <i class="fa-solid fa-bars hamburg" onclick="document.querySelector('.dropdown').classList.add('active')"></i>
             </div>
             <div class="dropdown">
                 <div class="links">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Skills</a> 
-                    <a href="#">Projects</a>
-                    <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+                    <a href="#main-container">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a> 
+                    <a href="#projects">Projects</a>
+                    <i class="fa-solid fa-xmark cancel" onclick="document.querySelector('.dropdown').classList.remove('active')"></i>
                 </div>
             </div>
         </nav>
         <section>
-            <div class="main-container">
+            <div class="main-container" id="main-container">
 
                 <!--herer are something I want to customize-->
                 <div class="image" data-aos="zoom-out" data-aos-duration="3000">
@@ -69,17 +69,17 @@
                         perspective on the industry.
                     </p>
                     <div class="social-links">
-                        <a href="#" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1000"><i class="fa-brands fa-github"></i>
+                        <a href="https://github.com/QiqiLust" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1000"><i class="fa-brands fa-github"></i>
                         </a>
-                        <a href="#" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1100"><i class="fa-brands fa-facebook"></i>
+                        <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1200"><i class="fa-brands fa-linkedin"></i>
                         </a>
-                        <a href="#" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1200"><i class="fa-brands fa-linkedin"></i>
-                        </a>
-                        <a href="#" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"><i class="fa-brands fa-x-twitter"></i>
+                        <a href="https://my.jobstreet.com/profile/anderson-lowzhenqi-bJzqP32H60" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"><i class="fas fa-briefcase"></i>
                         </a>
                     </div>
                     <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1400">
+                        <a href="mailto:zhenqi1104@gmail.com">
                         <button>Hire me</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -93,12 +93,12 @@
 <section class="about" id="about">
     <div class="content">
         <div class="title" data-aos="fade-up" data-aos-duration="1500"><span>About Me</span></div>
-
+        <div class="about-details">
         <!--My Picture Will Put Here-->
         <div class="left" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
             <img src="My_Photo.jpg" alt="">
         </div>
-        <!---->
+        <!--End of Psicture-->
 
         <div class="right">
             <div class="topic" data-aos="flip-left" data-aos-duration="1500" data-aos-delay="200">Creating is My Passion</div>
@@ -116,10 +116,10 @@
                 continuously strive to improve.
             </p>
            <div class="button" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-delay="400">
-            <button>Download Resume</button>
+            <a href="Anderson Resume 2025.pdf"><button>Download Resume</button></a>
            </div>
         </div>
-
+        </div>
     </div>
 </section>
 
@@ -134,34 +134,52 @@
                 <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
                     Skills Reflects Our Knowledge
                 </div>
-                <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">asdfjdfadkjflaldjf</p>
-                <div class="exprience" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
-                    <div class="num">10</div>
+
+                <!--Emphasis The Importent Contents-->
+                <p class="emphasis" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">
+                    During my Diploma in Information Technology, I have gained hands-on 
+                    experience with several programming languages and technologies. 
+                    My <span>primary focus</span> has been on <span>HTML, CSS, C++, and C#,</span> with some 
+                    exposure to <span>JavaScript.</span>
+                    <br><br>
+                    Additionally, I have gained basic exposure to <span>network fundamentals, 
+                    Cisco Packet Tracer, Java, Linux (Ubuntu), SQL, databases,</span> and <span>XAML</span> 
+                    for mobile application development. However, <span>my experience in these 
+                    areas is limited,</span> and I do not yet have in-depth proficiency. I am 
+                    <span>eager to strengthen</span> my understanding and improve my technical skills 
+                    with the <span>right guidance and learning opportunities</span>. Given sufficient 
+                    time and resources, I am confident in my ability to adapt and meet the 
+                    necessary requirements for the role.
+                </p>
+            <!--End of Emphasis-->
+
+                <div class="experience" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
+                    <div class="num">Last</div>
                     <div class="exp">
-                        Years Of <br/>
-                        Exprience
+                        Sem Of <br/>
+                        Information Technology in Diploma
                     </div>
                 </div>
             </div>
             <div class="boxes">
                 <div class="box">
                     <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">HTML</div>
-                    <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">70%</div>
+                    <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300">90%</div>
                 </div>
                 <div class="box">
                     <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="450">CSS</div>
-                    <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="600">60%</div>
+                    <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="600">80%</div>
                 </div>
                 <div class="box">
                     <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="750">JavaScript</div>
-                    <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="900">20%</div>
+                    <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="900">30%</div>
                 </div>
                 <div class="box">
-                    <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1050">Blender</div>
+                    <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1050">GitHub</div>
                     <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1200">50%</div>
                 </div>
                 <div class="box">
-                    <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1350">Unity</div>
+                    <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1350">Unity & Blender</div>
                     <div class="per" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="1500">50%</div>
                 </div>
                 <div class="box">
@@ -175,41 +193,51 @@
 
 
 <!--My Projects Section Start-->
-<section class="projects" id="projects">
+<section class="Projects" id="projects">
     <div class="content">
-        <div class="title" data-aos="fade-up" data-aos-duration="1200"><span>My Projects</span></div>
+        <div class="title"><span>My Projects</span></div>
         <div class="boxes">
             <div class="box">
                 <div class="icon">
                     <i class="fas fa-dekstop"></i>
                 </div>
-                <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-                    <div class="icon">
-                        <i class="topic">Web Development</i>
-                        <p>adfjlajdffaljdfsdfjaldjf</p>
-                    </div>
-                    <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
-                        <div class="icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <div class="topic">Graphic Design</div>
-                        <p>alsdfjlsjfajdlfaldjfljfd</p>
-                    </div>
-                    <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-                        <div class="icon">
-                            <i class="fas fa-camera-retro"></i>
-                        </div>
-                        <div class="topic">Protography</div>
-                        <p>fjadslfadjladjjlaskdjfdakldsjjlka</p>
-                    </div>
-                    <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="800">
-                        <div class="icon">
-                            <i class="fas fa-tablet-alt"></i>
-                        </div>
-                        <div class="topic">Apps Development</div>
-                        <p>sflkaldfkadkfaldflakjdlkja</p>
-                    </div>
+                <div class="topic">Web Development</div>
+                <p>12312312312312331</p>
+            </div>
+            <div class="box">
+                <div class="icon">
+                    <i class="fas fa-dekstop"></i>
                 </div>
+                <div class="topic">Web Development</div>
+                <p>12312312312312331</p>
+            </div>
+            <div class="box">
+                <div class="icon">
+                    <i class="fas fa-dekstop"></i>
+                </div>
+                <div class="topic">Web Development</div>
+                <p>12312312312312331</p>
+            </div>
+            <div class="box">
+                <div class="icon">
+                    <i class="fas fa-dekstop"></i>
+                </div>
+                <div class="topic">Web Development</div>
+                <p>12312312312312331</p>
+            </div>
+            <div class="box">
+                <div class="icon">
+                    <i class="fas fa-dekstop"></i>
+                </div>
+                <div class="topic">Web Development</div>
+                <p>12312312312312331</p>
+            </div>
+            <div class="box">
+                <div class="icon">
+                    <i class="fas fa-dekstop"></i>
+                </div>
+                <div class="topic">Web Development</div>
+                <p>12312312312312331</p>
             </div>
         </div>
     </div>
@@ -225,9 +253,13 @@
         </div>
         <div class="text">
             <div class="topic" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">Have Any Projects?</div>
-            <p>alddflladjflakdjffladj</p>
+            <p></p>
             <div class="button">
-                <button>Let's Chat</button>
+                <a href="https://wa.me/60104482728" target="_blank">
+                
+                <button>Let's Chat  <i class="fa-brands fa-whatsapp"></i></button>
+                
+                </a>
             </div>
         </div>
     </div>
@@ -238,7 +270,7 @@
 <footer>
     <div class="text">
         <span>Created By
-            <a href="#">Procoder09</a>
+            <a href="#">Anderson Low</a>
             &#169; 2025 All Rights Reserved</span>
     </div>
 </footer>
