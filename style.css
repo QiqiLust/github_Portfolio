@@ -159,42 +159,22 @@ body{
 
 
  /* Container Size Of Blender Model */
- .main-container .image{
-    width: 500px;
-    height: 80vh;
-    border-radius: 5%;
+ .main-container #container3D{
+    width: 50%;
+    height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #b74b3b 1px solid;
     overflow: hidden;
-    box-shadow: 0 0 50px #b74b3b;
-    margin: 0 auto;
+    background-color: rgb(39, 38, 38);
  }
  
- .main-container.image img{
-    width: 100%;
+ .main-container#container3D canvas{
+    width: 50%;
  }
-
- .main-container .image:hover{
-    animation: animate 1.5s case-in-out infinite;
- }
- /* End of Container of Blender Model */
-
-
- /* Start of Changign Text */
- @keyframes animate{
-    0%{
-        scale: 1;
-    }
-
-    50%{
-        scale: 1.05;
-    }
-
-    100%{
-        scale: 1;
-    }
- }
- /* End of Changing Text */
  
-
  .main-container .content{
     margin: center;
     color: white;
@@ -215,9 +195,88 @@ body{
     font-weight: 600;
  }
 
- .content .typewriter-text{
+ .typewriter-text{
     color: #b74b3b;
     text-shadow: 0 0 10px #b74b3b;
+ }
+
+ .typewriter-text span{
+    position: relative;
+ }
+
+ .typewriter-text span::before{
+    content: "Web Development"; /* Default text */
+    color: #b74b3b;
+    display: inline-block;
+    min-width: max-content; /* Makes sure content expands properly */
+    animation: words 20s steps(1) infinite;
+ }
+
+ .typewriter-text span::after{
+    content: "";
+    background-color: black;
+    position: absolute;
+    width: auto;
+    height: 100%;
+    border-left: 3px solid #b74b3b;
+    right: -8px;
+    animation: cursor 0.6s infinite, typing 20s steps(15,end) infinite;
+ }
+
+ @keyframes cursor{
+    to{
+        border-left: 3px solid #b74b3b;
+    }
+ }
+
+ @keyframes words{
+    0%,
+    20%{
+        content: "Web Development";
+    }
+    21%,
+    40%{
+        content: "Software Development";
+    }
+    41%,
+    60%{
+        content: "Game Development";
+    }
+    61%,
+    80%{
+        content: "Models Development";
+    }
+    81%,
+    100%{
+        content: "Or Any Relevant Position";
+    }
+ }
+
+ @keyframes typing{
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95%{
+        width: 0;
+    }
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%,
+    80%,
+    85%{
+        width: calc(100% + 8px);
+    }
  }
 
  .content p{
@@ -474,11 +533,13 @@ section .button button:hover{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    border: #b74b3b 1px solid;
 }
 
 #projects .boxes .box{
     margin: 20px 0;
-    width: calc(100% / 3 - 20px); /* Keep 3 columns */
+    width: calc(100% / 1 - 20px); /* adjust columns for the My_Project */
+    height: 50vh;;
     text-align: center;
     border-radius: 12px;
     padding: 30px 10px;
@@ -599,7 +660,7 @@ footer{
 
     #projects .boxes .box{
         margin: 20px 0;
-        width: calc(100% / 2 - 20px);
+        width: calc(100% / 1 - 20px);
     }
 
     section .main-container{
@@ -650,10 +711,10 @@ footer{
         font-size: 1.5rem;
     }
 
-    .main-container .image{
-        z-index: -1;
+    .main-container #container3D{
+        z-index: 1;
         width: 50%;
-        height: 60%;
+        height: 60vh;
     }
 
     .skills .skills-details{
@@ -684,9 +745,9 @@ footer{
 }
 
 @media (max-width: 500px){
-    .main-container .image{
+    .main-container #container3D{
         width: 50%;
-        height: 60%;
+        height: 30hv;
         margin-bottom: 0px;
     }
 

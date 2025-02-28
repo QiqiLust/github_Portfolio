@@ -1,0 +1,11 @@
+Model Information:
+* title:	CYBER ARM PAINTED
+* source:	https://sketchfab.com/3d-models/cyber-arm-painted-7f177f6b37b94cadbd3774eb211d2bdc
+* author:	Idmental (https://sketchfab.com/idmental.id)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "CYBER ARM PAINTED" (https://sketchfab.com/3d-models/cyber-arm-painted-7f177f6b37b94cadbd3774eb211d2bdc) by Idmental (https://sketchfab.com/idmental.id) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
