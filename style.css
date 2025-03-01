@@ -155,26 +155,71 @@ body{
     padding-left: 100px;
     align-items: center;
     margin-top: 4%;
+    border: #af3434 1px solid;
  }
 
 
- /* Container Size Of Blender Model */
- .main-container #container3D{
+/* Container Size Of Blender Model */
+.main-container #container3D {
     width: 50%;
     height: 60vh;
-    position: relative;
+    position: relative; /* Required for absolute positioning inside */
     display: flex;
     align-items: center;
     justify-content: center;
     border: #b74b3b 1px solid;
     overflow: hidden;
     background-color: rgb(39, 38, 38);
- }
- 
- .main-container#container3D canvas{
+}
+
+/* Ensure Canvas Stays Inside */
+.main-container #container3D canvas {
     width: 50%;
- }
- 
+}
+
+/* ✅ Loading Screen Inside container3D */
+#loadingScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 300px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    z-index: 10;
+}
+
+/* ✅ Loading Bar */
+#loadingBarContainer {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#loadingBar {
+    width: 0%;
+    height: 100%;
+    background: #af3434;
+    transition: width 0.3s ease-in-out;
+}
+
+#loadingText {
+    position: absolute;
+    bottom: 20px; /* Sticks to the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center it */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
  .main-container .content{
     margin: center;
     color: white;
@@ -648,6 +693,11 @@ footer{
 }
 
 @media (max-width: 1000px){
+    .credit{
+        color: #fff;
+        border: #af3434 1px solid;
+    }
+    
     .about .about-details{
         justify-content: center;
         flex-direction: column;

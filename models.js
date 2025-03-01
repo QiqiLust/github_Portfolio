@@ -1,139 +1,106 @@
-  //Import the THREE.js library
-  import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
-  // To allow for the camera to move around the scene
-  import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
-  // To allow for importing the .gltf file
-  import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+// Import the THREE.js library
+import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 
-  //Create a Three.JS Scene
-  const scene = new THREE.Scene();
-  //Create a new camera with positions and angles
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+// Import OrbitControls for camera movement
+import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 
-  //Keep track of the mouse position, so we can make the eye move
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
+// Import GLTFLoader (this supports BOTH .gltf and .glb files)
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
-  //Keep the 3D object on a global variable so we can access it later
-  let object;
+// Create a Three.js Scene
+const scene = new THREE.Scene();
 
-  //OrbitControls allow the camera to move around the scene
-  let controls;
+// Create a new Perspective Camera
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-  //Set which object to render
-  let objToRender = 'cyber_laptop';
+// Keep track of the 3D object globally
+let object;
+let controls;
 
-  //Instantiate a loader for the .gltf file
-  const loader = new GLTFLoader();
+// Define the correct file path for the .glb model
+const modelPath = "./models/cyber_laptop.glb"; // Ensure this is the correct location
 
-  //Load the file
-  loader.load(
-    `./models/${objToRender}/scene.gltf`,
+// Instantiate the GLTFLoader
+const loader = new GLTFLoader();
+
+// Show loading screen
+document.getElementById("loadingScreen").style.display = "flex";
+
+// Load the .glb file
+loader.load(
+    modelPath,
     function (gltf) {
-      object = gltf.scene;
+        object = gltf.scene;
 
-      // ✅ ADDED CODE: Compute bounding box and center the model
-      const bbox = new THREE.Box3().setFromObject(object);
-      const center = bbox.getCenter(new THREE.Vector3());
-      const size = bbox.getSize(new THREE.Vector3());
+        // Compute bounding box to center the model
+        const bbox = new THREE.Box3().setFromObject(object);
+        const center = bbox.getCenter(new THREE.Vector3());
+        const size = bbox.getSize(new THREE.Vector3());
 
-      // Move object so it's centered at (0,0,0)
-      object.position.sub(center);
+        // Move object so it's centered at (0,0,0)
+        object.position.sub(center);
 
-      // Add object to the scene
-      scene.add(object);
+        // Add object to the scene
+        scene.add(object);
 
-      // ✅ ADDED CODE: Adjust camera distance dynamically
-      const maxDim = Math.max(size.x, size.y, size.z);
-      const fov = camera.fov * (Math.PI / 130);
-      const cameraDistance = maxDim / Math.tan(fov / 2);
+        // Adjust camera distance dynamically
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fov = camera.fov * (Math.PI / 180);
+        const cameraDistance = maxDim / Math.tan(fov / 2);
 
-      // ✅ Adjust Camera Angle: 45° left & 45° above
-    const angle = Math.PI / 4; // 45 degrees in radians
+        // Adjust Camera Position: 45° left & 45° above
+        const angle = Math.PI / 4;
+        const x = -Math.sin(angle) * cameraDistance * 1.5; // Left (-X)
+        const y = Math.sin(angle) * cameraDistance * 0.2;  // Up (+Y)
+        const z = Math.cos(angle) * cameraDistance * 1.5;  // Slightly back (+Z)
 
-    const x = -Math.sin(angle) * cameraDistance * 1.5; // Move left (-X)
-    const y = Math.sin(angle) * cameraDistance * 0.2;  // Move up (+Y)
-    const z = Math.cos(angle) * cameraDistance * 1.5;  // Move slightly back (+Z)
+        camera.position.set(x, y, z);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-    camera.position.set(x, y, z); // 45° left (-X), 45° above (+Y), back (+Z)
-
-      camera.lookAt(new THREE.Vector3(0, 0, 0));
+        // Hide loading screen when model is fully loaded
+        document.getElementById("loadingScreen").style.display = "none";
     },
     function (xhr) {
-      console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        // Update loading progress
+        let percent = (xhr.loaded / xhr.total) * 100;
+        document.getElementById("loadingBar").style.width = percent + "%";
+        document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
     },
     function (error) {
-      console.error(error);
+        console.error('Error loading model:', error);
+        document.getElementById("loadingText").innerText = "Failed to load!";
     }
-  );
+);
 
-  //Instantiate a new renderer and set its size
-  const renderer = new THREE.WebGLRenderer({ alpha: true }); // Alpha: true allows for the transparent background
-  renderer.setSize(window.innerWidth, window.innerHeight);
+// Create the WebGL Renderer
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById("container3D").appendChild(renderer.domElement);
 
-  //Add the renderer to the DOM
-  document.getElementById("container3D").appendChild(renderer.domElement);
+// Add Lights
+const topLight = new THREE.DirectionalLight(0xffffff, 1);
+topLight.position.set(1000, 1000, 1000);
+topLight.castShadow = true;
+scene.add(topLight);
 
-  // ✅ REMOVED STATIC CAMERA POSITION (Now it's dynamic from bounding box)
+const ambientLight = new THREE.AmbientLight(0x333333, 5);
+scene.add(ambientLight);
 
-  //Add lights to the scene, so we can actually see the 3D model
-  const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
-  topLight.position.set(1000, 1000, 1000); //top-left-ish
-  topLight.castShadow = true;
-  scene.add(topLight);
+// Enable OrbitControls
+controls = new OrbitControls(camera, renderer.domElement);
 
-  const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "cyber_laptop" ? 5 : 1);
-  scene.add(ambientLight);
-
-  //This adds controls to the camera, so we can rotate / zoom it with the mouse
-  if (objToRender === "cyber_laptop") {
-    controls = new OrbitControls(camera, renderer.domElement);
-  }
-
-  //Render the scene
-  function animate() {
+// Function to animate the scene
+function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-  }
+}
 
-  // ✅ ADDED CODE: Update camera on window resize
-  window.addEventListener("resize", function () {
+// Adjust camera on window resize
+window.addEventListener("resize", function () {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+});
 
-  //Start the 3D rendering
-  animate();
-
-
-  /* Skills Section animation */
-
-  /*
-  <div class="boxes">
-  <div class="box">
-      <div class="topic" data-aos="fade>HTML</div>
-      <div class="per" data-aos="fade-right">90%</div>
-  </div>
-  <div class="box">
-      <div class="topic" data-aos="fade-right">CSS</div>
-      <div class="per" data-aos="fade-right">80%</div>
-  </div>
-  <div class="box">
-      <div class="topic" data-aos="fade-right">JavaScript</div>
-      <div class="per" data-aos="fade-right">30%</div>
-  </div>
-  <div class="box">
-      <div class="topic" data-aos="fade-right">GitHub</div>
-      <div class="per" data-aos="fade-right">50%</div>
-  </div>
-  <div class="box">
-      <div class="topic" data-aos="fade-right" data-aos-duration="30" data-aos-delay="27">Unity & Blender</div>
-      <div class="per" data-aos="fade-right" data-aos-duration="30" data-aos-delay="28">50%</div>
-  </div>
-  <div class="box">
-      <div class="topic" data-aos="fade-right">C#/C++</div>
-      <div class="per" data-aos="fade-right">60%</div>
-  </div>
-</div>
-*/
+// Start the 3D rendering
+animate();
