@@ -105,3 +105,35 @@
 
   //Start the 3D rendering
   animate();
+
+
+  /* Skills Section animation */
+
+  /*
+  <div class="boxes">
+  <div class="box">
+      <div class="topic" data-aos="fade>HTML</div>
+      <div class="per" data-aos="fade-right">90%</div>
+  </div>
+  <div class="box">
+      <div class="topic" data-aos="fade-right">CSS</div>
+      <div class="per" data-aos="fade-right">80%</div>
+  </div>
+  <div class="box">
+      <div class="topic" data-aos="fade-right">JavaScript</div>
+      <div class="per" data-aos="fade-right">30%</div>
+  </div>
+  <div class="box">
+      <div class="topic" data-aos="fade-right">GitHub</div>
+      <div class="per" data-aos="fade-right">50%</div>
+  </div>
+  <div class="box">
+      <div class="topic" data-aos="fade-right" data-aos-duration="30" data-aos-delay="27">Unity & Blender</div>
+      <div class="per" data-aos="fade-right" data-aos-duration="30" data-aos-delay="28">50%</div>
+  </div>
+  <div class="box">
+      <div class="topic" data-aos="fade-right">C#/C++</div>
+      <div class="per" data-aos="fade-right">60%</div>
+  </div>
+</div>
+*/
