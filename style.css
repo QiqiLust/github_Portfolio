@@ -533,7 +533,6 @@ section .button button:hover{
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Center the entire row */
-    border: #b74b3b 1px solid;
 }
 
 #projects .boxes .box {
