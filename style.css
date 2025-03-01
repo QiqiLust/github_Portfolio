@@ -529,32 +529,50 @@ section .button button:hover{
     color: #b74b3b;
 }
 
-#projects .boxes{
+#projects .boxes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center; /* Center the entire row */
     border: #b74b3b 1px solid;
 }
 
-#projects .boxes .box{
-    margin: 20px 0;
-    width: calc(100% / 1 - 20px); /* adjust columns for the My_Project */
-    height: 50vh;;
+#projects .boxes .box {
+    display: flex;
+    align-items: center; /* Align image & content vertically */
+    justify-content: center; /* Keep content centered */
+    flex-direction: row; /* Arrange image & content side by side */
+    width: 100%; /* Adjust columns for My_Projects */
+    height: 50vh;
     text-align: center;
     border-radius: 12px;
-    padding: 30px 10px;
+    padding: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-    cursor: default;
     color: white;
-    transition: all 0.4s ease;
+    border: #b74b3b 1px solid;
+    gap: 10px; /* Space between image & content */
 }
 
-#projects .boxes .box:hover{
-    background-color: #b74b3b;
-    color: #fff;
+/* Image takes 50% of the box */
+#projects .boxes .box img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the box */
+    border-radius: 10px;
 }
 
-#projects .boxes .box .icon{
+/* Content takes 50% of the box */
+#projects .boxes .box .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center text & icon */
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+}
+
+/* Style the icon */
+#projects .boxes .box .icon {
     height: 50px;
     width: 50px;
     background: #b74b3b;
@@ -563,24 +581,13 @@ section .button button:hover{
     line-height: 50px;
     font-size: 18px;
     color: #fff;
-    margin: 0 auto 10px auto;
+    margin-bottom: 10px;
     transition: all 0.4s ease;
 }
 
-.boxes .box:hover .icon{
-    background-color: #fff;
-    color: #b74b3b;
-}
-
-#projects .boxes .box:hover .topic,
-#projects .boxes .box:hover p{
-    color: white;
-    transition: all 0.4s ease;
-}
-
-#projects .boxes .box:hover .topic,
-#projects .boxes .box:hover p{
-    color: #fff;
+/* Reverse layout: Image on Right, Content on Left */
+#projects .boxes .boxreverse {
+    flex-direction: row-reverse !important;
 }
 
 section.Contact#contact {
