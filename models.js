@@ -18,7 +18,7 @@ let object;
 let controls;
 
 // Define the correct file path for the .glb model
-const modelPath = "./models/cyber_laptop.glb"; // Ensure this is the correct location
+const modelPath = "./models/laptop.glb"; // Ensure this is the correct location
 
 // Instantiate the GLTFLoader
 const loader = new GLTFLoader();
