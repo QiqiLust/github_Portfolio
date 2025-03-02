@@ -64,17 +64,19 @@ loader.load(
         camera.lookAt(new THREE.Vector3(0, 0, 0));
 
         // Hide loading screen when model is fully loaded
-        document.getElementById("loadingScreen").style.display = "none";
+        setTimeout(() => {
+            document.getElementById("loadingScreen").style.display = "none";
+        }, 500); // Ensures UI updates properly
     },
     function (xhr) {
-        // Update loading progress
-        let percent = (xhr.loaded / xhr.total) * 100;
-        document.getElementById("loadingBar").style.width = percent + "%";
-        document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
-    },
-    function (error) {
-        console.error('Error loading model:', error);
-        document.getElementById("loadingText").innerText = "Failed to load!";
+        if (xhr.total) {
+            let percent = (xhr.loaded / xhr.total) * 100;
+            document.getElementById("loadingBar").style.width = percent + "%";
+            document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
+        } else {
+            // Show an estimated loading state when total size is unknown
+            document.getElementById("loadingText").innerText = "Loading...";
+        }
     }
 );
 
