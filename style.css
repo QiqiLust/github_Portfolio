@@ -205,18 +205,21 @@ body{
     width: 0%;
     height: 100%;
     background: #af3434;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.3s linear; /* Ensures smooth progress */
+    display: block; /* Ensures visibility */
 }
 
+/* ✅ Loading Text */
 #loadingText {
     position: absolute;
-    bottom: 20px; /* Sticks to the bottom */
+    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Center it */
+    transform: translateX(-50%);
     color: white;
     font-size: 14px;
     font-weight: bold;
 }
+
 
 .credit{
     position: absolute;

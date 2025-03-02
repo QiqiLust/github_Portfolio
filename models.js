@@ -69,13 +69,25 @@ loader.load(
         }, 500); // Ensures UI updates properly
     },
     function (xhr) {
+        let percent = 0;
+
         if (xhr.total > 0) {
-            let percent = (xhr.loaded / xhr.total) * 100;
-            document.getElementById("loadingBar").style.width = percent + "%";
-            document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
+            percent = (xhr.loaded / xhr.total) * 100;
+        } else {
+            console.warn("XHR total size unknown, using fallback animation.");
         }
+
+        document.getElementById("loadingBar").style.width = percent + "%";
+        document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
+
+        // Force a UI repaint to ensure progress updates
+        let bar = document.getElementById("loadingBar");
+        bar.style.display = "none";
+        bar.offsetHeight; // Forces browser repaint
+        bar.style.display = "block";
     }
 );
+
 
 // Create the WebGL Renderer
 const renderer = new THREE.WebGLRenderer({ alpha: true });
