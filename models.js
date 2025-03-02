@@ -18,7 +18,7 @@ let object;
 let controls;
 
 // Define the correct file path for GitHub Pages
-const modelPath = "https://QiqiLust.github.io/github_Portfolio/models/laptop.glb";
+const modelPath = "./models/laptop.glb";
 
 // Instantiate the GLTFLoader
 const loader = new GLTFLoader();
