@@ -78,7 +78,7 @@ loader.load(
         }
 
         document.getElementById("loadingBar").style.width = percent + "%";
-        document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
+        document.getElementById("loadingText").innerText = `Loading... `;
 
         // Force a UI repaint to ensure progress updates
         let bar = document.getElementById("loadingBar");
