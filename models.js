@@ -17,8 +17,8 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 let object;
 let controls;
 
-// Define the correct file path for the .glb model
-const modelPath = "https://github.com/QiqiLust/github_Portfolio/tree/main/models/laptop_design.glb"; // Ensure this is the correct location
+// Define the correct file path for GitHub Pages
+const modelPath = "https://QiqiLust.github.io/github_Portfolio/models/laptop.glb";
 
 // Instantiate the GLTFLoader
 const loader = new GLTFLoader();
