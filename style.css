@@ -155,7 +155,6 @@ body{
     padding-left: 100px;
     align-items: center;
     margin-top: 4%;
-    border: #af3434 1px solid;
  }
 
 
@@ -219,6 +218,12 @@ body{
     font-weight: bold;
 }
 
+.credit{
+    position: absolute;
+    color: white;
+    left: 1rem;
+    top: 4rem;
+}
 
  .main-container .content{
     margin: center;
