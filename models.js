@@ -73,9 +73,6 @@ loader.load(
             let percent = (xhr.loaded / xhr.total) * 100;
             document.getElementById("loadingBar").style.width = percent + "%";
             document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
-        } else {
-            // Show an estimated loading state when total size is unknown
-            document.getElementById("loadingText").innerText = "Loading...";
         }
     }
 );
