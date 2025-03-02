@@ -69,7 +69,7 @@ loader.load(
         }, 500); // Ensures UI updates properly
     },
     function (xhr) {
-        if (xhr.total) {
+        if (xhr.total > 0) {
             let percent = (xhr.loaded / xhr.total) * 100;
             document.getElementById("loadingBar").style.width = percent + "%";
             document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
