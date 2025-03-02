@@ -18,7 +18,7 @@ let object;
 let controls;
 
 // Define the correct file path for GitHub Pages
-const modelPath = "https://drive.google.com/file/d/1U5HpmB50AZ3VVMpgywu18PtYAyHVF6VG/view?usp=drive_link";
+const modelPath = "#";
 
 // Instantiate the GLTFLoader
 const loader = new GLTFLoader();
