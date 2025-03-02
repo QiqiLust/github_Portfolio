@@ -6,6 +6,7 @@ import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/js
 
 // Import GLTFLoader (this supports BOTH .gltf and .glb files)
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/DRACOLoader.js";
 
 // Create a Three.js Scene
 const scene = new THREE.Scene();
@@ -18,10 +19,15 @@ let object;
 let controls;
 
 // Define the correct file path for GitHub Pages
-const modelPath = "https://github.com/QiqiLust/github_Portfolio/tree/main/models/laptop_design";
+const modelPath = "./models/watch.glb";
 
 // Instantiate the GLTFLoader
 const loader = new GLTFLoader();
+
+// Attach DRACOLoader
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+loader.setDRACOLoader(dracoLoader);
 
 // Show loading screen
 document.getElementById("loadingScreen").style.display = "flex";
@@ -50,9 +56,9 @@ loader.load(
 
         // Adjust Camera Position: 45° left & 45° above
         const angle = Math.PI / 4;
-        const x = -Math.sin(angle) * cameraDistance * 1.5; // Left (-X)
-        const y = Math.sin(angle) * cameraDistance * 0.2;  // Up (+Y)
-        const z = Math.cos(angle) * cameraDistance * 1.5;  // Slightly back (+Z)
+        const x = -Math.sin(angle) * cameraDistance * 1.5;
+        const y = Math.sin(angle) * cameraDistance * 0.2;
+        const z = Math.cos(angle) * cameraDistance * 1.5;
 
         camera.position.set(x, y, z);
         camera.lookAt(new THREE.Vector3(0, 0, 0));
