@@ -77,8 +77,8 @@ loader.load(
             console.warn("XHR total size unknown, using fallback animation.");
         }
 
-        document.getElementById("loadingBar").style.width = percent + "%";
-        document.getElementById("loadingText").innerText = `Loading... ${Math.round(percent)}%`;
+        document.getElementById("watch.glb").style.width = percent + "%";
+        document.getElementById("watch.glb").innerText = `Loading... ${Math.round(percent)}%`;
 
         // Force a UI repaint to ensure progress updates
         let bar = document.getElementById("loadingBar");
